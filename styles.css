@@ -1,0 +1,235 @@
+body {
+    background-color: #D3D7E6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+#gameArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container {
+    width: 100px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .container {
+        width: 60px;
+        height: 90px;
+    }
+}
+
+.container.selected {
+    transform: translateY(-20px);
+}
+
+/* 控制面板样式 */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.controls label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls input {
+    padding: 5px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+
+/* 开始游戏按钮样式 */
+.controls > button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.controls > button:hover {
+    background-color: #45A049;
+}
+
+/* 随机按钮样式 */
+#randomButton {
+    padding: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+#randomButton:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+#randomButton svg {
+    fill: #666;
+}
+
+#randomButton:hover svg {
+    fill: #333;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #FEFEFE;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 20% auto;
+    }
+}
+
+/* 胜利提示框样式 */
+.win-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.win-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.win-content h2 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.win-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.win-content button {
+    padding: 0.5rem 1.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.win-content button:hover {
+    background-color: #45A049;
+}
+
+/* 游戏头部样式 */
+.game-header {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+/* 转移次数容器 */
+.move-count-container {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    justify-content: center;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 转移次数标签 */
+.move-count-label {
+    font-size: 18px;
+    color: #666;
+    margin-right: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* 转移次数数字 */
+.move-count-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+    vertical-align: middle;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .move-count-label {
+        font-size: 16px;
+    }
+    .move-count-number {
+        font-size: 20px;
+    }
+}
