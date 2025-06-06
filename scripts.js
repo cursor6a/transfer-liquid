@@ -123,15 +123,16 @@ const initialStateInput = document.getElementById('initialState');
 const startButton = document.querySelector('.controls > button');
 
 
-function validateInitialState() {
+function validateInitialState(e) {
     const filled = parseInt(document.getElementById('filledContainers').value);
     const empty = parseInt(document.getElementById('emptyContainers').value);
     const input = initialStateInput.value.trim();
     const numbers = input.split(' ');
+    if (e.target === initialStateInput)
+        document.getElementById('filledContainers').value = numbers.length;
 
     // 验证是否为可能的打乱后状态
     const isValid = filled >= 3 && filled <= 9 && empty >= 1 && empty <= 9 && input.length > 0 &&
-        numbers.length === filled &&
         numbers.sort().every((element, index) => element - 1 === index);
 
     // 更新按钮状态
